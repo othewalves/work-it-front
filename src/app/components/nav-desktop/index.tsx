@@ -20,16 +20,18 @@ const NavDesktop = () => {
                     {item.title}
                 </Link>
             ))}
-            <Button variant={'secondary'}>
-                <CalendarDateRangeIcon />
-                Agendamentos
-            </Button>
-            <Button asChild>
-                <Link href={'/login'}>
-                    <UserIcon />
-                    Entrar
-                </Link>
-            </Button>
+            <div className="flex gap-2">
+                <Button variant={'secondary'}>
+                    <CalendarDateRangeIcon />
+                    Agendamentos
+                </Button>
+                <Button asChild>
+                    <Link href={'/login'}>
+                        <UserIcon />
+                        Entrar
+                    </Link>
+                </Button>
+            </div>
         </nav>
     );
 }
