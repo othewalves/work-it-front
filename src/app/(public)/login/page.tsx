@@ -7,6 +7,7 @@ import { loginForm, loginSchema } from './login.schema';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 const Login = () => {
 
@@ -47,10 +48,13 @@ const Login = () => {
                         </span>
                         <Button className="w-full" type="submit">Fazer login</Button>
                     </form>
-                    <Button className="w-full mt-4" variant="secondary">Cadastre-se</Button>
+                    <Button className="w-full mt-4" variant="secondary">
+                        <Link href={'/sign-up'}>
+                            Cadastre-se
+                        </Link>
+                    </Button>
                 </CardContent>
             </Card >
-
         </div>
     );
 }
