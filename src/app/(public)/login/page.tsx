@@ -8,15 +8,28 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { useLogin } from "./use-login";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+    const router = useRouter();
 
     const { register, handleSubmit, formState: { errors } } = useForm<loginForm>({
         resolver: zodResolver(loginSchema)
     });
 
-    const handleLogin = (data: loginForm) => {
-        console.log(data);
+    const login = useLogin();
+
+    const handleLogin = async (data: loginForm) => {
+
+        await login.mutate(data, {
+            onSuccess: (res) => {
+                router.push('/dashboard');
+            },
+            onError: (error) => {
+                console.error(error.message)
+            }
+        })
     }
 
     return (

@@ -11,7 +11,7 @@ const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = '/';
 export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const public_route = PUBLIC_ROUTES.find((route) => path === route.path);
-    const authToken = request.cookies.get('@work-it:token');
+    const authToken = request.cookies.get('workit_token');
 
     if (!authToken && public_route) {
         return NextResponse.next()
@@ -44,5 +44,6 @@ export function middleware(request: NextRequest) {
 export const config: MiddlewareConfig = {
     matcher: [
         '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)'
+
     ]
 }
