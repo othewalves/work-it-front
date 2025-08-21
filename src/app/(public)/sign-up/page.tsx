@@ -1,7 +1,7 @@
 'use client'
 
 import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 
 import { signUpForm, signUpSchema } from './sign-up.schema';
 
@@ -13,19 +13,29 @@ import { useRouter } from "next/navigation";
 
 import CPFInput from "../../components/cpf-input";
 import PhoneInput from "../../components/phone-input";
+import { useSignUp } from "./user-sign-up";
 const SignUp = () => {
     // const request: NextRequest;
     const router = useRouter();
+    const { mutateAsync: signUp, isPending, isError, error } = useSignUp();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<signUpForm>({
+
+    const { register, handleSubmit, formState: { errors }, control } = useForm<signUpForm>({
         resolver: zodResolver(signUpSchema)
     });
 
     const handleSignUp = async (data: signUpForm) => {
-        // await request.cookies.set('@work-it:token', JSON.stringify('absndma'));
-        router.push('/dashboard')
+        try {
+            const { confirmPassword, ...payload } = data;
+            const response = await signUp({ ...payload, file: 'teste.png' });
+            console.log('AQUI: ', response);
 
+            router.push("/login");
+        } catch (err) {
+            console.error("Erro no cadastro:", err);
+        }
     };
+
 
     return (
         <div className="w-full h-full px-8 py-4 sm:px-24 sm:py-6 flex items-center justify-center">
@@ -50,14 +60,26 @@ const SignUp = () => {
                         <div className="flex flex-row w-full justify-between gap-2">
                             <div>
                                 <div key="input-cpf">
-                                    <CPFInput {...register('cpf')} />
-                                    <span className="text-xs text-red-600">
-                                        {errors.cpf?.message}
-                                    </span>
+                                    <CPFInput
+                                        control={control}
+                                        name="cpf"
+                                        error={errors.cpf?.message}
+                                    />
                                 </div>
                             </div>
                             <div>
-                                <PhoneInput {...register('phone')} />
+                                <Controller
+                                    name="phone"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <div key="input-PHONE">
+                                            <PhoneInput {...field} />
+                                            <span className="text-xs text-red-600">
+                                                {errors.cpf?.message}
+                                            </span>
+                                        </div>
+                                    )}
+                                />
                                 <span className="text-xs text-red-600">
                                     {errors.phone?.message}
                                 </span>

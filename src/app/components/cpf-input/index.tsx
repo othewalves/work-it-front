@@ -1,17 +1,37 @@
 import { Input } from "@/components/ui/input";
-import { PatternFormat, PatternFormatProps } from "react-number-format";
+import { Control, Controller, FieldValues } from "react-hook-form";
+import { PatternFormat } from "react-number-format";
 
-const CPFInput = (props: Partial<PatternFormatProps>) => {
-    return (
-        <PatternFormat
-            {...props}
-            placeholder="Ex: 012.345.678-90"
-            format="###.###.###-##"
-            customInput={
-                Input
-            }
-        />
-    );
+interface CPFInputProps {
+    control: any;
+    name: string;
+    error?: string;
 }
+
+
+const CPFInput = ({ control, name, error }: CPFInputProps) => {
+    return (
+        <div>
+            <Controller
+                name={name}
+                control={control}
+                render={({ field }) => (
+                    <PatternFormat
+                        {...field}
+                        value={field.value || ""}
+                        onValueChange={(values) => {
+                            field.onChange(values.formattedValue);
+                        }}
+                        placeholder="Ex: 012.345.678-90"
+                        format="###.###.###-##"
+                        mask="_"
+                        customInput={Input}
+                    />
+                )}
+            />
+            {error && <span className="text-xs text-red-600">{error}</span>}
+        </div>
+    );
+};
 
 export default CPFInput;
