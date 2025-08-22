@@ -10,6 +10,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Link from "next/link";
 import { useLogin } from "./use-login";
 import { useRouter } from "next/navigation";
+import { UserContext } from "../../hooks/use-auth";
+import { useContext } from "react";
 
 const Login = () => {
     const router = useRouter();
@@ -19,12 +21,14 @@ const Login = () => {
     });
 
     const login = useLogin();
+    const { handleUser } = useContext(UserContext);
 
     const handleLogin = async (data: loginForm) => {
 
         await login.mutate(data, {
             onSuccess: (res) => {
-                router.push('/dashboard');
+                handleUser(res.user)
+                router.push('/panel');
             },
             onError: (error) => {
                 console.error(error.message)

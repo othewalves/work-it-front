@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const Header = () => {
     return (
-        <header className="w-full px-8 py-2 sm:px-24 sm:py-4 flex flex-row items-center justify-between">
+        <header className="w-full px-8 py-2 sm:px-24 sm:py-4 flex flex-row items-center justify-between border-b">
             <Link href={'/'}>
                 <Image
                     src={Logo}

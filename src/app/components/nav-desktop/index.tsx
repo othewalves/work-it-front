@@ -13,6 +13,7 @@ const NavDesktop = () => {
 
     const path = usePathname();
 
+
     return (
         <nav className="gap-8 text-sm sm:text-base flex flex-row items-center justify-center">
             {NavItems.map((item) => (
