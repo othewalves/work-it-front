@@ -15,7 +15,7 @@ interface IUser {
     store: []
 };
 
-export interface IUserContext {
+export interface IAuthContext {
     user: IUser;
     setUser: (user: IUser) => void;
     handleUser: (user: IUser) => void;
@@ -31,14 +31,14 @@ const defaultUser: IUser = {
 };
 
 
-export const UserContext = createContext<IUserContext>({
+export const AuthContext = createContext<IAuthContext>({
     user: defaultUser,
     setUser: () => { },
     handleUser: () => { },
 })
 
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const [user, setUser] = useState<IUser>(defaultUser);
 
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
 
     return (
-        <UserContext.Provider
+        <AuthContext.Provider
             value={{
                 user,
                 setUser,
@@ -64,6 +64,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             }}
         >
             {children}
-        </UserContext.Provider>
+        </AuthContext.Provider>
     )
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import CoreProvider from "./api/core-provider";
-import { UserProvider } from "./hooks/use-auth";
+import { AuthProvider } from "./hooks/use-auth";
 
 
 export const metadata: Metadata = {
@@ -20,9 +20,9 @@ export default function RootLayout({
         className={` dark`}
       >
         <CoreProvider>
-          <UserProvider>
+          <AuthProvider>
             {children}
-          </UserProvider>
+          </AuthProvider>
         </CoreProvider>
       </body>
     </html>

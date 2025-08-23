@@ -20,7 +20,7 @@ type SignUpViewProps = ReturnType<typeof useSignUpModel>;
 
 const SignUpView = (props: SignUpViewProps) => {
 
-    const { control, errors, handleSubmit, isSubmitting, onSubmit, register } = props;
+    const { control, errors, handleSubmit, isPending, onSubmit, register } = props;
 
     return (
         <div className="w-full h-full px-8 py-4 sm:px-24 sm:py-6 flex items-center justify-center">
@@ -91,9 +91,12 @@ const SignUpView = (props: SignUpViewProps) => {
                             {errors.confirmPassword?.message}
                         </span>
                         {/* </div> */}
-                        <Button disabled={isSubmitting} className="w-full" type="submit">Cadastrar</Button>
+                        <Button disabled={isPending} className="w-full" type="submit">
+                            {isPending ? 'Aguarde...' : 'Cadastrar'}
+
+                        </Button>
                     </form>
-                    <Button disabled={isSubmitting} className="mt-4" variant="secondary">
+                    <Button disabled={isPending} className="mt-4" variant="secondary">
                         <Link href={'/sign-up'}>
                             Fazer login
                         </Link>

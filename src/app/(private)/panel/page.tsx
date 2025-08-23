@@ -1,11 +1,11 @@
 'use client'
 import { useContext } from "react";
-import { UserContext } from "../../hooks/use-auth";
+import { AuthContext } from "../../hooks/use-auth";
 import HomeFilter from "../../components/home-filter";
 import HomeCatalogue from "../../components/home-catalogue";
 
 const Panel = () => {
-    const { user } = useContext(UserContext);
+    const { user } = useContext(AuthContext);
 
     return (
         <div className="w-full px-8 py-2 sm:px-24 sm:py-4">

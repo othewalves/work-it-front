@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from '../../../../public/logo-workit.png';
 import { useContext } from "react";
-import { UserContext } from "@/src/app/hooks/use-auth";
+import { AuthContext } from "@/src/app/hooks/use-auth";
 
 import {
     ChevronDownIcon,
@@ -18,12 +18,16 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button";
-import { useLogout } from "../../(private)/hooks/use-logout";
+import { useLogout } from "../../hooks/use-logout";
 
 const Menubar = () => {
 
-    const { user } = useContext(UserContext);
-    const { logout } = useLogout();
+    const { user } = useContext(AuthContext);
+    const { logout, isPending } = useLogout();
+
+    if (isPending) {
+        return <h1>Aguarde...</h1>
+    }
 
     return (
         <header className="w-full px-8 py-2 sm:px-24 sm:py-4 flex items-center justify-between border-b">
