@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import Header from "../components/header";
 
 export default function PublicLayout({
@@ -9,6 +10,7 @@ export default function PublicLayout({
         <div>
             <Header />
             {children}
+            <Toaster />
         </div>
     );
 }

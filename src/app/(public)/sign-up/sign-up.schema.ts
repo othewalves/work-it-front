@@ -5,16 +5,18 @@ export const signUpSchema = z.object({
         .string()
         .min(1, { message: 'O nome é obrigatório' }),
     email: z
-        .string(),
+        .string()
+        .email('E-mail inválido')
+        .min(1, { message: 'O e-mail é obrigatório' }),
     cpf: z
         .string(),
     phone: z
         .string()
-        .min(1, { message: 'O telefone é obrigatório' }),
-    // .regex(
-    //     /^(\+55\s?)?(\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$/,
-    //     { message: 'Telefone inválido' }
-    // ),
+        .min(1, { message: 'O telefone é obrigatório' })
+        .regex(
+            /^(\+55\s?)?(\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$/,
+            { message: 'Telefone inválido' }
+        ),
     password: z
         .string()
         .min(6, { message: 'A senha deve ter ao menos 6 caracteres' })

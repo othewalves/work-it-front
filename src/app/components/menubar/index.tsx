@@ -5,7 +5,11 @@ import Logo from '../../../../public/logo-workit.png';
 import { useContext } from "react";
 import { UserContext } from "@/src/app/hooks/use-auth";
 
-import { ChevronDownIcon, ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
+import {
+    ChevronDownIcon,
+    ArrowRightStartOnRectangleIcon,
+    PlusIcon
+} from "@heroicons/react/24/outline";
 
 import {
     DropdownMenu,
@@ -30,7 +34,6 @@ const Menubar = () => {
                     width={90}
                     height={20}
                     priority
-
                 />
             </Link>
             <DropdownMenu>
@@ -50,6 +53,16 @@ const Menubar = () => {
                             </Link>
                         </Button>
                     </DropdownMenuItem>
+                    {user.store.length <= 0 && (
+                        <DropdownMenuItem>
+                            <Button variant={'link'} className="w-full" asChild>
+                                <Link href={'/create-store'} className="text-white">
+                                    <PlusIcon color="primary" />
+                                    Criar store
+                                </Link>
+                            </Button>
+                        </DropdownMenuItem>
+                    )}
                     <DropdownMenuItem className="flex items-center justify-center">
                         <Button variant={'outline'} className="w-full" onClick={logout}>
                             <ArrowRightStartOnRectangleIcon />

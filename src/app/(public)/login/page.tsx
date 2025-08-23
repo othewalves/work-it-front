@@ -65,7 +65,7 @@ const Login = () => {
                         </span>
                         <Button className="w-full" type="submit">Fazer login</Button>
                     </form>
-                    <Button className="w-full mt-4" variant="secondary">
+                    <Button className="w-full mt-4" variant="secondary" asChild>
                         <Link href={'/sign-up'}>
                             Cadastre-se
                         </Link>

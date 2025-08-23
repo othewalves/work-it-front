@@ -2,7 +2,6 @@
 
 import {
     createContext,
-    useContext,
     useState,
     useEffect,
     ReactNode
@@ -13,6 +12,7 @@ interface IUser {
     name: string;
     email: string;
     role?: string
+    store: []
 };
 
 export interface IUserContext {
@@ -26,7 +26,8 @@ const defaultUser: IUser = {
     id: '',
     name: '',
     email: '',
-    role: ''
+    role: '',
+    store: []
 };
 
 

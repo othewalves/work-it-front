@@ -1,15 +1,14 @@
 import { Input } from "@/components/ui/input";
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 
-interface CPFInputProps {
+interface InputPhoneProps {
     control: any;
     name: string;
-    error?: string;
 }
 
 
-const CPFInput = ({ control, name, error }: CPFInputProps) => {
+const InputPhone = ({ control, name }: InputPhoneProps) => {
     return (
         <div>
             <Controller
@@ -29,9 +28,9 @@ const CPFInput = ({ control, name, error }: CPFInputProps) => {
                     />
                 )}
             />
-            {error && <span className="text-xs text-red-600">{error}</span>}
+            {/* {error && <span className="text-xs text-red-600">{error}</span>} */}
         </div>
     );
 };
 
-export default CPFInput;
+export default InputPhone;
