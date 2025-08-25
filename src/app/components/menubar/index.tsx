@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { useLogout } from "../../hooks/use-logout";
 
 const Menubar = () => {
-
     const { user } = useContext(AuthContext);
     const { logout, isPending } = useLogout();
 

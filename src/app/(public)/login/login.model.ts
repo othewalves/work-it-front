@@ -6,16 +6,11 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { useContext } from "react";
-// import { AuthContext } from "../../hooks/use-auth";
-
 
 export const useLoginModel = () => {
 
     const router = useRouter();
-    // const { handleUser } = useContext(AuthContext);
-
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<loginForm>({
+    const { register, handleSubmit, formState: { errors } } = useForm<loginForm>({
         resolver: zodResolver(loginSchema)
     });
 
@@ -50,7 +45,6 @@ export const useLoginModel = () => {
         register,
         handleSubmit,
         errors,
-        isSubmitting,
         onSubmit,
 
     }

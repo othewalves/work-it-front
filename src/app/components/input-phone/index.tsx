@@ -21,8 +21,8 @@ const InputPhone = ({ control, name }: InputPhoneProps) => {
                         onValueChange={(values) => {
                             field.onChange(values.formattedValue);
                         }}
-                        placeholder="Ex: 012.345.678-90"
-                        format="###.###.###-##"
+                        placeholder="Informe seu telefone"
+                        format="(##) #####-####"
                         mask="_"
                         customInput={Input}
                     />

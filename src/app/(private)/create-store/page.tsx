@@ -1,8 +1,10 @@
+'use client'
+import useCreateStoreModel from "./create-store.model";
+import CreateStoreView from "./create-store.view";
+
 const CreateStore = () => {
-    return (
-        <div className="w-full px-8 py-2 sm:px-24 sm:py-4 flex items-center justify-center">
-        </div>
-    );
+    const methods = useCreateStoreModel();
+    return <CreateStoreView {...methods} />;
 }
 
 export default CreateStore;
