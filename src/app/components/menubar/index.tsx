@@ -56,12 +56,20 @@ const Menubar = () => {
                             </Link>
                         </Button>
                     </DropdownMenuItem>
-                    {user.store.length <= 0 && (
+                    {user.store.length < 1 ? (
                         <DropdownMenuItem>
                             <Button variant={'link'} className="w-full" asChild>
                                 <Link href={'/create-store'} className="text-white">
                                     <PlusIcon color="primary" />
                                     Criar store
+                                </Link>
+                            </Button>
+                        </DropdownMenuItem>
+                    ) : (
+                        <DropdownMenuItem>
+                            <Button variant={'link'} className="w-full" asChild>
+                                <Link href={'/dashboard'} className="text-white">
+                                    Ir para comércio
                                 </Link>
                             </Button>
                         </DropdownMenuItem>

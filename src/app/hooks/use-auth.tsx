@@ -12,8 +12,20 @@ interface IUser {
     name: string;
     email: string;
     role?: string
-    store: []
+    store: IStores[]
 };
+export interface IStores {
+    id: string;
+    name: string;
+    slogan: string;
+    cnpj: string;
+    description: string;
+    phone: string[];
+    email: string;
+    photo: string;
+    userId: string;
+}
+
 
 export interface IAuthContext {
     user: IUser;

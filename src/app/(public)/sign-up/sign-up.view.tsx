@@ -96,8 +96,8 @@ const SignUpView = (props: SignUpViewProps) => {
 
                         </Button>
                     </form>
-                    <Button disabled={isPending} className="mt-4" variant="secondary">
-                        <Link href={'/sign-up'}>
+                    <Button disabled={isPending} className="mt-4 w-full" variant="secondary">
+                        <Link href={'/login'}>
                             Fazer login
                         </Link>
                     </Button>

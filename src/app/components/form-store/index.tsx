@@ -11,7 +11,7 @@ const FormStore = () => {
 
     return (
 
-        <form onSubmit={handleSubmit(onSubmit, errs => { console.error('erou', errs) })} className="w-full gap-4 flex flex-col">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full gap-4 flex flex-col">
             <SelectCategories
                 control={control}
                 name="category"

@@ -1,10 +1,12 @@
+'use client'
+import useDashboardModel from "./dashboard.model";
+import DashboardView from "./dashboard.view";
+
 const Dashboard = () => {
 
-    return (
-        <div>
-            Dashboard
-        </div>
-    );
+    const methods = useDashboardModel();
+
+    return <DashboardView {...methods} />
 }
 
 export default Dashboard;

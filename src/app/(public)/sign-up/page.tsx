@@ -1,6 +1,11 @@
 'use client'
+import dynamic from "next/dynamic";
 import { useSignUpModel } from "./sign-up.model";
-import SignUpView from "./sign-up.view";
+const SignUpView = dynamic(() => import('./sign-up.view'), {
+    ssr: false,
+    loading: () => <p>Carregando...</p>,
+});
+
 
 const SignUp = () => {
 

@@ -5,8 +5,12 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import api from '../../api/axios';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import { StoreResponse } from './create-store.types';
 
 const useCreateStoreModel = () => {
+
+    const router = useRouter();
 
     const { control, register, handleSubmit, watch, formState: { errors } } = useForm<CreateStoreForm>({
         resolver: zodResolver(CreateStoreSchema)
@@ -17,16 +21,17 @@ const useCreateStoreModel = () => {
         AxiosError<{ errors: { field: string; message: string }[] }
         >, FormData>({
             mutationFn: async (payload: FormData) => {
-                const { data } = await api.post(
+                const { data } = await api.post<StoreResponse>(
                     '/store',
                     payload,
                     { withCredentials: true }
                 )
 
-                return data;
+                return data.id;
             },
-            onSuccess: () => {
+            onSuccess: (store) => {
                 toast.success('Aguarde enquanto redirecionamos')
+                router.push(`create-store/address/${store}`)
             },
             onError: () => {
                 toast.error('Não foi possível, tente mais tarde')
@@ -34,8 +39,6 @@ const useCreateStoreModel = () => {
         });
 
     const onSubmit = async (payload: CreateStoreForm) => {
-
-        console.log('payload', payload)
 
         const formData = new FormData();
 

@@ -1,9 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import HomeFilter from "../../components/home-filter";
 import HomeHero from "../../components/home-hero";
-import Image from "next/image";
-import MOCK from '../../../../public/mock-grocery.png'
+
 import HomeCatalogue from "../../components/home-catalogue";
+
 export default function Home() {
     return (
         <main className="w-full h-full px-8 py-4 sm:px-24 sm:py-6 static">
