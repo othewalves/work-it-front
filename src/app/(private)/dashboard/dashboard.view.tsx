@@ -1,25 +1,25 @@
 'use client'
+import { Button } from "@/components/ui/button";
 import useDashboardModel from "./dashboard.model";
+import Link from "next/link";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
-type DashboardViewProps = ReturnType<typeof useDashboardModel>;
-const DashboardView = (props: DashboardViewProps) => {
+import DashboardStoresCard from "../../components/dashboard-stores-card";
 
-    const { stores, isPending } = props;
 
-    if (isPending) {
-        return <h1>Aguarde...</h1>
-    }
+const DashboardView = () => {
 
-    if (!stores) {
-        return <h1>Não há comércios ligados ao usuário</h1>
-    }
+    const methods = useDashboardModel();
 
     return (
-        <div>
-            <div>
-                <span>{stores.name}</span>
-                <span>{stores.cnpj}</span>
-            </div>
+        <div className="w-full px-8 py-2 sm:px-24 sm:py-4">
+            <Button variant={'secondary'} className="ml-auto" asChild>
+                <Link href={'/create-store'} className="text-white">
+                    <PlusIcon color="primary" />
+                    Criar store
+                </Link>
+            </Button>
+            <DashboardStoresCard {...methods} />
 
         </div>
 

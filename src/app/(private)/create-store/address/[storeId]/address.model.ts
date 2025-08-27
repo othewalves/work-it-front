@@ -42,7 +42,6 @@ const useAddressModel = () => {
     });
 
     const onSubmit = async (payload: CreateAddressForm) => {
-        console.log('payload', payload);
 
         mutate(payload)
     }
@@ -55,13 +54,10 @@ const useAddressModel = () => {
                 return;
             }
 
-            // Preenche automaticamente os campos
             setValue("street", data.logradouro || "");
             setValue("neighborhood", data.bairro || "");
             setValue("city", data.localidade || "");
             setValue("state", data.uf || "");
-
-            console.log('chamou');
 
         } catch {
             toast.error("Erro ao buscar CEP");

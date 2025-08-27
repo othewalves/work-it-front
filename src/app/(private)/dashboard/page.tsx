@@ -4,9 +4,8 @@ import DashboardView from "./dashboard.view";
 
 const Dashboard = () => {
 
-    const methods = useDashboardModel();
 
-    return <DashboardView {...methods} />
+    return <DashboardView />
 }
 
 export default Dashboard;

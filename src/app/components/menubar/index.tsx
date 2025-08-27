@@ -8,7 +8,8 @@ import { AuthContext } from "@/src/app/hooks/use-auth";
 import {
     ChevronDownIcon,
     ArrowRightStartOnRectangleIcon,
-    PlusIcon
+    PlusIcon,
+    UserIcon
 } from "@heroicons/react/24/outline";
 
 import {
@@ -19,14 +20,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../hooks/use-logout";
+import useMenubar from "./menubar.model";
 
 const Menubar = () => {
-    const { user } = useContext(AuthContext);
-    const { logout, isPending } = useLogout();
-
-    if (isPending) {
-        return <h1>Aguarde...</h1>
-    }
+    // const { user } = useContext(AuthContext);
+    const { logout } = useLogout();
+    const { user, isPending } = useMenubar();
 
     return (
         <header className="w-full px-8 py-2 sm:px-24 sm:py-4 flex items-center justify-between border-b">
@@ -43,7 +42,7 @@ const Menubar = () => {
                 <DropdownMenuTrigger>
                     <div className="flex items-center justify-center gap-2 cursor-pointer">
                         <div className="bg-primary/10 text-primary font-semibold w-[40px] h-[40px] rounded-full flex items-center justify-center">
-                            {user.name[0]}
+                            {isPending ? <UserIcon width={24} height={24} /> : user?.name[0]}
                         </div>
                         <ChevronDownIcon width={20} />
                     </div>
@@ -56,7 +55,7 @@ const Menubar = () => {
                             </Link>
                         </Button>
                     </DropdownMenuItem>
-                    {user.store.length < 1 ? (
+                    {user?.store.length === 0 ? (
                         <DropdownMenuItem>
                             <Button variant={'link'} className="w-full" asChild>
                                 <Link href={'/create-store'} className="text-white">
