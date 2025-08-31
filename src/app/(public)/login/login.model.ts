@@ -18,7 +18,7 @@ export const useLoginModel = () => {
     const { mutate, isPending } = useMutation<string, AxiosError<{ errors: { field: string; message: string }[] }>, loginForm>({
         mutationFn: async (payload: loginForm) => {
             const { data } = await api.post(
-                '/api/auth/login',
+                'api/auth/login',
                 payload,
                 { withCredentials: true }
             )
