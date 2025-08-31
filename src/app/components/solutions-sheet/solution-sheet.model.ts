@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import api from "../../api/axios";
-import { useState } from "react";
 import { CreateSolutionForm, CreateSolutionSchema } from "./solution.schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +28,7 @@ const useSolutionSheet = (storeId: string) => {
     const { data: solutions, isPending } = useQuery<Solution[]>({
         queryKey: ['solution', storeId],
         queryFn: async ({ queryKey }) => {
-            const [_key, storeId] = queryKey;
+            const [, storeId] = queryKey;
 
             const { data } = await api.get<Solution[]>(
                 `solution/${storeId}`,

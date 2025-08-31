@@ -2,8 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from '../../../../public/logo-workit.png';
-import { useContext } from "react";
-import { AuthContext } from "@/src/app/hooks/use-auth";
 
 import {
     ChevronDownIcon,
@@ -23,7 +21,6 @@ import { useLogout } from "../../hooks/use-logout";
 import useMenubar from "./menubar.model";
 
 const Menubar = () => {
-    // const { user } = useContext(AuthContext);
     const { logout } = useLogout();
     const { user, isPending } = useMenubar();
 

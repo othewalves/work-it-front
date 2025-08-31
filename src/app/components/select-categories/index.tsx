@@ -8,11 +8,11 @@ import {
 } from "@/components/ui/select"
 import useSelectCategoriesModel from "./select-categories.model";
 import { Label } from "@/components/ui/label";
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 
-interface SelectCategoriesProps {
-    control: any;
-    name: string;
+interface SelectCategoriesProps<T extends FieldValues = FieldValues> {
+    control: Control<T>;
+    name: Path<T>;
 }
 
 const SelectCategories = ({ control, name }: SelectCategoriesProps) => {

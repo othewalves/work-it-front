@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { PlusIcon } from "@heroicons/react/24/outline";
 import useSolutionSheet from "./solution-sheet.model";
 import { useParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
@@ -10,7 +9,7 @@ const SolutionsSheet = () => {
     const params = useParams<{ storeId: string }>();
     const storeId = params.storeId;
 
-    const { handleSubmit, onSubmit, register, errors, isLoading, watch } = useSolutionSheet(storeId);
+    const { handleSubmit, onSubmit, register, errors, isLoading } = useSolutionSheet(storeId);
 
     return (
         <SheetContent>
