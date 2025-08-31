@@ -8,7 +8,7 @@ interface InputPhoneProps<T extends FieldValues = FieldValues> {
 }
 
 
-const InputPhone = ({ control, name }: InputPhoneProps) => {
+const InputPhone = <T extends FieldValues>({ control, name }: InputPhoneProps<T>) => {
     return (
         <div>
             <Controller

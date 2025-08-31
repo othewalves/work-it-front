@@ -7,7 +7,7 @@ interface InputCPFProps<T extends FieldValues = FieldValues> {
     name: Path<T>;
 }
 
-const InputCPF = ({ control, name }: InputCPFProps) => {
+const InputCPF = <T extends FieldValues>({ control, name }: InputCPFProps<T>) => {
     return (
         <div>
             <Controller

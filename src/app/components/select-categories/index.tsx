@@ -15,7 +15,7 @@ interface SelectCategoriesProps<T extends FieldValues = FieldValues> {
     name: Path<T>;
 }
 
-const SelectCategories = ({ control, name }: SelectCategoriesProps) => {
+const SelectCategories = <T extends FieldValues>({ control, name }: SelectCategoriesProps<T>) => {
 
     const { categories, isPending } = useSelectCategoriesModel();
 
