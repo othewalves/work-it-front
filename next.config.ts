@@ -4,11 +4,16 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
+      // {
+      //   protocol: "http",
+      //   hostname: "localhost",
+      //   port: "5000",
+      //   pathname: "/files/**",
+      // },
       {
         protocol: "http",
-        hostname: "localhost",
-        port: "5000",
-        pathname: "/files/**",
+        hostname: "res.cloudinary.com",
+        pathname: "/**", // permite todas as imagens do Cloudinary
       },
     ],
   },

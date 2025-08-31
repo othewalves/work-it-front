@@ -1,10 +1,10 @@
 import { Input } from "@/components/ui/input";
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 
-interface InputPhoneProps {
-    control: any;
-    name: string;
+interface InputPhoneProps<T extends FieldValues = FieldValues> {
+    control: Control<T>;
+    name: Path<T>;
 }
 
 
@@ -28,7 +28,6 @@ const InputPhone = ({ control, name }: InputPhoneProps) => {
                     />
                 )}
             />
-            {/* {error && <span className="text-xs text-red-600">{error}</span>} */}
         </div>
     );
 };

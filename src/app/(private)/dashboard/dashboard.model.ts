@@ -6,14 +6,16 @@ const useDashboardModel = () => {
     const { data: stores, isPending } = useQuery<Stores[]>({
         queryKey: ['owner', 'stores'],
         queryFn: async () => {
-            const { data } = await api.get('store/owner', {
-                withCredentials: true,
-            })
+            const { data } = await api.get('store/owner',
+                // {
+                //     withCredentials: true,
+                // }
+            )
 
             return data
         },
 
-        staleTime: 1000 * 60 * 5,
+        staleTime: 0,
     })
 
     return {

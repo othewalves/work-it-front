@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { filterForm, filterSchema } from "./filter.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const CATEGORIES = [
     { id: 'asdfghj', name: 'Assistência técnica' },
@@ -31,7 +32,7 @@ const HomeFilter = () => {
     }
 
     const handlefilter = ({ filter }: filterForm) => {
-
+        toast(filter);
     }
 
 

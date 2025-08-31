@@ -1,10 +1,10 @@
 import { Input } from "@/components/ui/input";
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 
-interface InputCPFProps {
-    control: any;
-    name: string;
+interface InputCPFProps<T extends FieldValues = FieldValues> {
+    control: Control<T>;
+    name: Path<T>;
 }
 
 const InputCPF = ({ control, name }: InputCPFProps) => {
@@ -27,7 +27,6 @@ const InputCPF = ({ control, name }: InputCPFProps) => {
                     />
                 )}
             />
-            {/* {error && <span className="text-xs text-red-600">{error}</span>} */}
         </div>
     );
 };

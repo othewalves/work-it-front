@@ -1,11 +1,7 @@
 'use client'
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import { CalendarDateRangeIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import useDashboardModel from "../../(private)/dashboard/dashboard.model";
 import Image from "next/image";
-import SolutionsSheet from "../solutions-sheet";
 import Link from "next/link";
 
 type DashboardViewProps = ReturnType<typeof useDashboardModel>;
@@ -23,7 +19,6 @@ const DashboardStoresCard = (props: DashboardViewProps) => {
 
     return (
         <div className="w-full flex justify-between flex-wrap mt-6">
-            {/* <Sheet> */}
             {stores?.map((store) => (
                 <Link key={store.id} href={`/dashboard/${store.id}`} className="cursor-pointer">
                     <Card className="w-full sm:w-[360px] h-[260px]">
@@ -33,7 +28,7 @@ const DashboardStoresCard = (props: DashboardViewProps) => {
                         </CardHeader>
                         <CardContent className="flex flex-col items-center justify-center">
                             <Image
-                                src={`http://localhost:5000/files/${store.photo}`}
+                                src={store.photo}
                                 alt={store.name}
                                 width={120}
                                 height={120}
@@ -42,22 +37,9 @@ const DashboardStoresCard = (props: DashboardViewProps) => {
 
                             />
                         </CardContent>
-                        {/* <CardFooter className="w-full flex justify-center gap-3">
-                        <SheetTrigger asChild>
-                            <Button>Serviços</Button>
-                        </SheetTrigger>
-                        <Button variant={'secondary'}>
-                            <CalendarDateRangeIcon />
-                            Agenda
-                        </Button>
-                    </CardFooter> */}
                     </Card>
                 </Link>
             ))}
-            {/* <SolutionsSheet /> */}
-            {/* </Sheet> */}
-
-
         </div>
     );
 }

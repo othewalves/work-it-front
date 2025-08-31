@@ -1,12 +1,11 @@
 import { Input } from "@/components/ui/input";
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 
-interface InputZipcodeProps {
-    control: any;
-    name: string;
+interface InputZipcodeProps<T extends FieldValues = FieldValues> {
+    control: Control<T>;
+    name: Path<T>;
 }
-
 const InputZipcode = ({ control, name }: InputZipcodeProps) => {
     return (
         <div>

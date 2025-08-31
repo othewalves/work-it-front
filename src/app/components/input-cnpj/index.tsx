@@ -1,13 +1,14 @@
 import { Input } from "@/components/ui/input";
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { PatternFormat } from "react-number-format";
 
-interface InputCNPJProps {
-    control: any;
-    name: string;
+interface InputCNPJProps<T extends FieldValues = FieldValues> {
+    control: Control<T>;
+    name: Path<T>;
 }
 
-const InputCNPJ = ({ control, name }: InputCNPJProps) => {
+
+const InputCNPJ = <T extends FieldValues>({ control, name }: InputCNPJProps<T>) => {
     return (
         <Controller
             name={name}

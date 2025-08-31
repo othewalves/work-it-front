@@ -18,7 +18,8 @@ const StoreView = () => {
 
     const { isPending, store } = useStoreModel(storeId);
     const { isPending: isLoading, solutions } = useSolutionSheet(storeId);
-    if (isPending) {
+
+    if (isLoading || isPending) {
         return <h1>Carregando...</h1>
     }
 
