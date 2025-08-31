@@ -6,7 +6,8 @@ interface InputZipcodeProps<T extends FieldValues = FieldValues> {
     control: Control<T>;
     name: Path<T>;
 }
-const InputZipcode = ({ control, name }: InputZipcodeProps) => {
+
+const InputZipcode = <T extends FieldValues>({ control, name }: InputZipcodeProps<T>) => {
     return (
         <div>
             <Controller
