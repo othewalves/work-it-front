@@ -10,15 +10,17 @@ export async function middleware(req: NextRequest) {
     // Se for rota pública, deixa passar
     if (PUBLIC_ROUTES.includes(path)) return NextResponse.next();
 
+    const token = sessionStorage.getItem('workit_token')
+
     // Faz requisição para seu backend que usa isAuthenticated
     const baseUrl = 'https://work-it-api-production.up.railway.app'; // ex: "https://work-it-api-production.up.railway.app"
     const authRes = await fetch(`${baseUrl}/api/auth/check`, {
         headers: {
-            cookie: req.headers.get('cookie') || '', // envia cookies existentes
+            cookie: token || '', // envia cookies existentes
         },
     });
 
-    const cookieHeader = req.headers.get('cookie') || '';
+    const cookieHeader = token || '';
     console.log('Cookie enviado para backend:', cookieHeader);
 
     console.log('Status do check:', authRes.status);
