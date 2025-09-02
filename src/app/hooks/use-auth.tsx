@@ -13,6 +13,7 @@ interface IUser {
     email: string;
     role?: string
     store: IStores[]
+    token: string;
 };
 export interface IStores {
     id: string;
@@ -39,7 +40,8 @@ const defaultUser: IUser = {
     name: '',
     email: '',
     role: '',
-    store: []
+    store: [],
+    token: ''
 };
 
 
@@ -56,11 +58,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const handleUser = (user: IUser) => {
         setUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('workit_token', JSON.stringify(user.token));
     };
 
     useEffect(() => {
-        const hasUser = localStorage.getItem('user');
+        const hasUser = sessionStorage.getItem('user');
         const userLogged: IUser = hasUser ? JSON.parse(hasUser) : defaultUser;
 
         setUser(userLogged);
