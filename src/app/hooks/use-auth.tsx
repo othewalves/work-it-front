@@ -7,35 +7,16 @@ import {
     ReactNode
 } from 'react';
 
-interface IUser {
-    id: string;
-    name: string;
-    email: string;
-    role?: string
-    store: IStores[]
-    token: string;
-};
-export interface IStores {
-    id: string;
-    name: string;
-    slogan: string;
-    cnpj: string;
-    description: string;
-    phone: string[];
-    email: string;
-    photo: string;
-    userId: string;
-}
-
+import { User } from '../(public)/login/login.types';
 
 export interface IAuthContext {
-    user: IUser;
-    setUser: (user: IUser) => void;
-    handleUser: (user: IUser) => void;
+    user: User;
+    setUser: (user: User) => void;
+    handleUser: (user: User) => void;
 }
 
 
-const defaultUser: IUser = {
+const defaultUser: User = {
     id: '',
     name: '',
     email: '',
@@ -54,9 +35,9 @@ export const AuthContext = createContext<IAuthContext>({
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
-    const [user, setUser] = useState<IUser>(defaultUser);
+    const [user, setUser] = useState<User>(defaultUser);
 
-    const handleUser = (user: IUser) => {
+    const handleUser = (user: User) => {
         setUser(user);
         sessionStorage.setItem('user', JSON.stringify(user));
         sessionStorage.setItem('workit_token', JSON.stringify(user.token));
@@ -64,7 +45,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const hasUser = sessionStorage.getItem('user');
-        const userLogged: IUser = hasUser ? JSON.parse(hasUser) : defaultUser;
+        const userLogged: User = hasUser ? JSON.parse(hasUser) : defaultUser;
 
         setUser(userLogged);
     }, []);
