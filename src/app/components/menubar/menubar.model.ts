@@ -7,8 +7,7 @@ const useMenubar = () => {
         queryKey: ['user', 'details'],
         queryFn: async () => {
             const { data } = await api.get(
-                '/user',
-                { withCredentials: true }
+                '/user'
             );
             return data
         },
