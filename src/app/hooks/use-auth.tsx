@@ -12,7 +12,7 @@ import { User } from '../(public)/login/login.types';
 export interface IAuthContext {
     user: User;
     setUser: (user: User) => void;
-    handleUser: (user: User) => void;
+    handleUser: (user: User, token: string) => void;
 }
 
 
@@ -22,7 +22,7 @@ const defaultUser: User = {
     email: '',
     role: '',
     store: [],
-    token: ''
+    // token: ''
 };
 
 
@@ -37,10 +37,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const [user, setUser] = useState<User>(defaultUser);
 
-    const handleUser = (user: User) => {
+    const handleUser = (user: User, token: string) => {
         setUser(user);
         sessionStorage.setItem('user', JSON.stringify(user));
-        sessionStorage.setItem('workit_token', JSON.stringify(user.token));
+        sessionStorage.setItem('workit_token', JSON.stringify(token));
     };
 
     useEffect(() => {

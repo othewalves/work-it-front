@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://work-it-api-production.up.railway.app',
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
     // headers: {
-    withCredentials: true,
+    // withCredentials: true,
     // "Content-Type": "application/json",
     // },
 });

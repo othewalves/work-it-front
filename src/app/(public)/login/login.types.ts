@@ -1,6 +1,7 @@
 export interface LoginResponse {
     success: boolean;
     user: User;
+    token: string;
 }
 
 export interface User {
@@ -9,7 +10,6 @@ export interface User {
     email: string;
     role: string;
     store: Store[];
-    token: string;
 }
 
 export interface Store {

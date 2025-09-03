@@ -25,12 +25,12 @@ export const useLoginModel = () => {
         loginForm>({
             mutationFn: async (payload: loginForm) => {
                 const { data } = await api.post<LoginResponse>(
-                    'api/auth/login',
+                    '/api/auth/login',
                     payload,
                     { withCredentials: true }
                 )
 
-                handleUser(data.user);
+                handleUser(data.user, data.token);
 
                 return data;
             },
