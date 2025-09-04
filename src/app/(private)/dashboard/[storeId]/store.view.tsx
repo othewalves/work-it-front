@@ -6,9 +6,9 @@ import SolutionsSheet from "@/src/app/components/solutions-sheet";
 import useStoreModel from "./store.model";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { Separator } from "@/components/ui/separator";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import useSolutionSheet from "@/src/app/components/solutions-sheet/solution-sheet.model";
+import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const StoreView = () => {
 
@@ -46,16 +46,38 @@ const StoreView = () => {
                     </Sheet>
                 </div>
             </div>
-            <div>
+            <div className="w-full gap-1.5 flex ">
+                <Card className="w-1/3 cursor-pointer">
+                    <CardHeader>
+                        <CardTitle>Agendamentos</CardTitle>
+                        <CardDescription>4 agendamentos para o dia de hoje</CardDescription>
+                        <CardAction><ArrowRightIcon color="white" width={16} height={16} /></CardAction>
+                    </CardHeader>
+                </Card>
+                <Card className="w-1/3 cursor-pointer">
+                    <CardHeader>
+                        <CardTitle>Serviços</CardTitle>
+                        <CardDescription>Gerencie os serviços do seu estabelecimento</CardDescription>
+                        <CardAction><ArrowRightIcon color="white" width={16} height={16} /></CardAction>
+                    </CardHeader>
+                </Card>
+                <Card className="w-1/3 cursor-pointer">
+                    <CardHeader>
+                        <CardTitle>Faturamento</CardTitle>
+                        <CardDescription>Tenha acesso ao controle financeiro do seu estabelecimento</CardDescription>
+                        <CardAction><ArrowRightIcon color="white" width={16} height={16} /></CardAction>
+                    </CardHeader>
+                </Card>
+            </div>
+            {/* <div>
                 <h2 className="text-xl font-medium">Serviços</h2>
-                <Separator />
                 {solutions?.map((solution) => (
                     <div key={solution.id}>
                         <span>{solution.name}</span>
                         <span>{solution.price}</span>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 }
