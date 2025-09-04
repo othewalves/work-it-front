@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const handleUser = (user: User, token: string) => {
         setUser(user);
         sessionStorage.setItem('user', JSON.stringify(user));
-        sessionStorage.setItem('workit_token', JSON.stringify(token));
+        sessionStorage.setItem('workit_token', token);
     };
 
     useEffect(() => {
