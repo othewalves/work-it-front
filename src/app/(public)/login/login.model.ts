@@ -45,6 +45,7 @@ export const useLoginModel = () => {
         });
 
     const onSubmit = async (data: loginForm) => {
+        toast('CHAMOU')
         mutate(data);
     }
 
