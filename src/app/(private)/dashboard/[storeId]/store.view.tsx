@@ -7,7 +7,6 @@ import useStoreModel from "./store.model";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import useSolutionSheet from "@/src/app/components/solutions-sheet/solution-sheet.model";
 import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const StoreView = () => {
@@ -17,9 +16,8 @@ const StoreView = () => {
 
 
     const { isPending, store } = useStoreModel(storeId);
-    const { isPending: isLoading, solutions } = useSolutionSheet(storeId);
 
-    if (isLoading || isPending) {
+    if (isPending) {
         return <h1>Carregando...</h1>
     }
 
@@ -55,11 +53,13 @@ const StoreView = () => {
                     </CardHeader>
                 </Card>
                 <Card className="w-1/3 cursor-pointer">
-                    <CardHeader>
-                        <CardTitle>Serviços</CardTitle>
-                        <CardDescription>Gerencie os serviços do seu estabelecimento</CardDescription>
-                        <CardAction><ArrowRightIcon color="white" width={16} height={16} /></CardAction>
-                    </CardHeader>
+                    <Link href={`/dashboard/${storeId}/solutions`}>
+                        <CardHeader>
+                            <CardTitle>Serviços</CardTitle>
+                            <CardDescription>Gerencie os serviços do seu estabelecimento</CardDescription>
+                            <CardAction><ArrowRightIcon color="white" width={16} height={16} /></CardAction>
+                        </CardHeader>
+                    </Link>
                 </Card>
                 <Card className="w-1/3 cursor-pointer">
                     <CardHeader>
@@ -69,15 +69,7 @@ const StoreView = () => {
                     </CardHeader>
                 </Card>
             </div>
-            {/* <div>
-                <h2 className="text-xl font-medium">Serviços</h2>
-                {solutions?.map((solution) => (
-                    <div key={solution.id}>
-                        <span>{solution.name}</span>
-                        <span>{solution.price}</span>
-                    </div>
-                ))}
-            </div> */}
+
         </div>
     );
 }
