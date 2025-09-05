@@ -23,7 +23,7 @@ const StoreView = () => {
 
     return (
         <div className="w-full px-8 py-2 sm:px-24 sm:py-4">
-            <div className="flex flex-col sm:flex-row justify-between items-center pb-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4">
                 <div>
                     <Button asChild variant={'link'}>
                         <Link href={'/dashboard'}>
@@ -31,29 +31,20 @@ const StoreView = () => {
                             Voltar para dashboard
                         </Link>
                     </Button>
-                    <h1 className="text-3xl font-bold">{store?.name}</h1>
-                    <h1>{store?.cnpj}</h1>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-2">
-                    <Button variant={'secondary'}>Editar</Button>
-                    <Sheet>
-                        <SheetTrigger asChild>
-                            <Button variant={'secondary'}>Novo serviço</Button>
-                        </SheetTrigger>
-                        <SolutionsSheet />
-                    </Sheet>
+                    <h1 className="sm:text-3xl text-xl font-bold ">{store?.name}</h1>
+                    <p className="sm:text-base text-xs ">{store?.cnpj}</p>
                 </div>
             </div>
-            <div className="w-full gap-1.5 flex ">
-                <Card className="w-1/3 cursor-pointer">
+            <div className="w-full gap-1.5 flex flex-col sm:flex-row ">
+                <Card className="sm:w-1/3 cursor-pointer">
                     <CardHeader>
                         <CardTitle>Agendamentos</CardTitle>
                         <CardDescription>4 agendamentos para o dia de hoje</CardDescription>
                         <CardAction><ArrowRightIcon color="white" width={16} height={16} /></CardAction>
                     </CardHeader>
                 </Card>
-                <Card className="w-1/3 cursor-pointer">
-                    <Link href={`/dashboard/${storeId}/solutions`}>
+                <Card className="sm:w-1/3 cursor-pointer">
+                    <Link href={`/dashboard/${storeId}/solutions`} className="w-full h-full">
                         <CardHeader>
                             <CardTitle>Serviços</CardTitle>
                             <CardDescription>Gerencie os serviços do seu estabelecimento</CardDescription>
@@ -61,7 +52,7 @@ const StoreView = () => {
                         </CardHeader>
                     </Link>
                 </Card>
-                <Card className="w-1/3 cursor-pointer">
+                <Card className="sm:w-1/3 cursor-pointer">
                     <CardHeader>
                         <CardTitle>Faturamento</CardTitle>
                         <CardDescription>Tenha acesso ao controle financeiro do seu estabelecimento</CardDescription>
