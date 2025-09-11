@@ -1,3 +1,4 @@
+'use client'
 import HomeFilter from "../../components/home-filter";
 import HomeHero from "../../components/home-hero";
 
@@ -12,7 +13,6 @@ export default function Home() {
                 <h2 className="text-2xl font-semibold">Recomendados</h2>
                 <div className="flex flex-row justify-between flex-wrap gap-4 mt-6">
                     <HomeCatalogue />
-
                 </div>
             </div>
 
