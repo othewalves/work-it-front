@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const filterSchema = z.object({
-    filter: z.string().min(1, 'Campo é obrigatório'),
+    filter: z.string(),
 })
 
 export type filterForm = z.infer<typeof filterSchema>

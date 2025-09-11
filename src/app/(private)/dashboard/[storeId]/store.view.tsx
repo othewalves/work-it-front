@@ -60,7 +60,6 @@ const StoreView = () => {
                     </CardHeader>
                 </Card>
             </div>
-
         </div>
     );
 }

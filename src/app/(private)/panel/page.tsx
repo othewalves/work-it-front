@@ -14,7 +14,6 @@ const Panel = () => {
                 <span className="text-base font-normal">O que precisa para hoje?</span>
             </div>
             <div className="flex flex-col gap-6 mt-8">
-
                 <HomeFilter />
                 <HomeCatalogue />
             </div>
