@@ -1,7 +1,5 @@
 import * as React from "react"
-import Image, { StaticImageData } from "next/image"
-import MOCK from '../../../../public/mock-grocery.png'
-
+import Image from "next/image"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card"
 import useHomeCatalogue from "./home-catalogue.model"
