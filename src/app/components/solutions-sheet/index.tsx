@@ -48,13 +48,7 @@ const SolutionsSheet = () => {
                 <Input
                     type="text"
                     placeholder="Informe as tags relacionadas separando por ;"
-                    {...register("tags", {
-                        setValueAs: (val: string) =>
-                            val
-                                .split(";") // separa pelas ";"
-                                .map((tag) => tag.trim()) // remove espaços extras
-                                .filter((tag) => tag.length > 0), // remove vazios
-                    })}
+                    {...register("tags")}
                 />
                 <span className="text-xs text-red-600">{errors.tags?.message}</span>
                 <Button type="submit">

@@ -1,40 +1,25 @@
 'use client'
 
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetTrigger } from "@/components/ui/sheet";
-import SolutionsSheet from "@/src/app/components/solutions-sheet";
-import useStoreModel from "./store.model";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { StoreHeader } from "../components/store-header";
 
 const StoreView = () => {
 
     const params = useParams<{ storeId: string }>();
     const storeId = params.storeId;
 
-
-    const { isPending, store } = useStoreModel(storeId);
-
-    if (isPending) {
-        return <h1>Carregando...</h1>
-    }
-
     return (
         <div className="w-full px-8 py-2 sm:px-24 sm:py-4">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4">
-                <div>
-                    <Button asChild variant={'link'}>
-                        <Link href={'/dashboard'}>
-                            <ArrowLeftIcon />
-                            Voltar para dashboard
-                        </Link>
-                    </Button>
-                    <h1 className="sm:text-3xl text-xl font-bold ">{store?.name}</h1>
-                    <p className="sm:text-base text-xs ">{store?.cnpj}</p>
-                </div>
-            </div>
+            <StoreHeader>
+                <StoreHeader.Container>
+                    <StoreHeader.Router path={`/dashboard/`} />
+                    <StoreHeader.Title />
+                </StoreHeader.Container>
+                <StoreHeader.Actions></StoreHeader.Actions>
+            </StoreHeader>
             <div className="w-full gap-1.5 flex flex-col sm:flex-row ">
                 <Card className="sm:w-1/3 cursor-pointer">
                     <CardHeader>
