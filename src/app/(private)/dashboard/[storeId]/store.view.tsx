@@ -18,7 +18,6 @@ const StoreView = () => {
                     <StoreHeader.Router path={`/dashboard/`} />
                     <StoreHeader.Title />
                 </StoreHeader.Container>
-                <StoreHeader.Actions></StoreHeader.Actions>
             </StoreHeader>
             <div className="w-full gap-1.5 flex flex-col sm:flex-row ">
                 <Card className="sm:w-1/3 cursor-pointer">
